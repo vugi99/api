@@ -15,9 +15,19 @@ Analysis of the bleeding-edge API JSON files for nanos world modding API.
 | `Classes/Player.json:777` | `DimensionChange` event | `"changes it's dimension"` — same apostrophe error |
 | `Classes/Character.json:1716` | `ViewModeChange` event | `"changes it's View Mode"` — same error |
 | `Classes/BasePickable.json:55` | `AddSkeletalMeshAttached` param desc | `"copying it's animation"` should be `"its"` |
-| `Classes/BaseDamageable.json:95` | `Respawn` description | `"fullying it's Health"` should be `"filling its Health"` |
+| `Classes/BaseDamageable.json:95` | `Respawn` description | `"fullying it's Health"` should be `"filling its Health"`, and `"moving it to it's Initial Location"` should be `"its Initial Location"` |
 | `Classes/Melee.json:3` | Class description | `"Charactes can hold it"` should be `"Characters"` |
 | `Classes/Character.json:592` | `SetImpactDamageTaken` description | `"when being roamed by things"` should be `"run over by things"` |
+| `Classes/WebUI.json:38` | `auto_resize` param desc | `"when screen changes it's size"` should be `"its"` |
+| `Classes/Gizmo.json:116` | `Transform` event description | `"has it's transform updated"` should be `"its"` |
+| `Classes/BaseVehicle.json:56` | `AddSkeletalMeshAttached` param desc | `"copying it's animation"` should be `"its"` |
+| `Classes/BasePawn.json:56` | `AddSkeletalMeshAttached` param desc | `"copying it's animation"` should be `"its"` |
+| `Classes/BasePawn.json:833` | `MoveComplete` event description | `"reaches it's destination"` should be `"its"` |
+| `Classes/BaseDamageable.json:176` | `HealthChange` event description | `"When Entity has it's Health changed"` should be `"its"` |
+| `StaticClasses/Server.json:396` | `KickByAccountID` description | `"by it's Account ID"` should be `"its"` |
+| `StaticClasses/Server.json:412` | `BanByAccountID` description | `"by it's Account ID"` should be `"its"` |
+| `StaticClasses/Server.json:427` | `Unban` description | `"by it's account ID"` should be `"its"` |
+| `StaticClasses/Assets.json:76` (and others) | Get assets description | `"it's metadata"` should be `"its"` (multiple instances in file) |
 
 ---
 
@@ -27,6 +37,7 @@ Analysis of the bleeding-edge API JSON files for nanos world modding API.
 |---|---|---|
 | `Classes/BaseEntity.json:566` | `BroadcastRemoteInRadiusEvent` | Parameter `radius` uses type `"number"` — every other function in the API uses `"float"` or `"integer"`. Should be `"float"` for consistency. |
 | `Classes/Character.json:1306` | `SetPhysicsAsset` | Parameter type is `"Other"` — not a valid nanos type. Should likely be `"PhysicsAssetPath"` or similar asset path type. |
+| `Classes/CharacterSimple.json:73` | `SetPhysicsAsset` | Parameter type is `"Other"` — not a valid nanos type. Should likely be `"PhysicsAssetPath"` or similar asset path type. |
 | `Enums.json:47-48` | `AssetType` enum values | Values are bare numbers (`2`, `4`, `8`...) while most other enums use strings (`"0"`, `"1"`...). Inconsistent format. |
 | `Enums.json:267` | `CollisionChannel.All` | Value is `"(1 << 32) - 1"` — in Lua this overflows a 32-bit integer. Should likely be `"(1 << 23) - 1"` or similar. |
 | `Classes/Sound.json:335` | `GetSoundType` return | Return type is `"float"` but should be `"SoundType"` (the enum). |
@@ -145,7 +156,7 @@ Functions that conceptually do similar things use different authority levels, e.
 
 1. **`Player.json:239`** — `"fat"` → `"fast"` (typo in efficiency)
 2. **`Client.json` `GetActorsInRadius`** — Wrong authority (`"server"` → `"client"`)
-3. **`Character.json:1306` `SetPhysicsAsset`** — Invalid type `"Other"`
+3. **`Character.json:1306` and `CharacterSimple.json:73` `SetPhysicsAsset`** — Invalid type `"Other"`
 4. **`Enums.json` `CollisionChannel.All`** — Overflow value `(1 << 32) - 1`
 5. **`BaseVehicle.json`** — Three functions reference "Pickable" instead of "Vehicle"
 6. **`Sound.json:335` `GetSoundType`** — Return type `"float"` should be `"SoundType"`

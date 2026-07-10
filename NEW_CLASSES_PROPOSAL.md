@@ -193,28 +193,7 @@ Proposals for new classes to expand the nanos world API. Each entry covers class
 
 ---
 
-## 11. Radar
-
-**Description:** A client-side entity that renders a minimap/radar HUD element showing nearby entities, with configurable filters, ranges, and visual styles.
-
-**Purpose:** Minimap/radar is essential for many sandbox game modes — battle royale, open world, survival, team games. Currently modders must build this entirely from scratch using Canvas + Tick events. A Radar class provides the core rendering with modders only needing to provide data.
-
-**Parent Classes:** Entity
-
-**Key Concepts:**
-- Radar shape (circle, rectangle)
-- Range/distance configuration
-- Entity filter (show only specific classes/teams)
-- Blip styling per entity type
-- FOV cone display
-- Ping/marker system
-- Smooth rotation with player
-- Zoom levels
-- Events: BlipAdded, BlipRemoved, PingRequested
-
----
-
-## 12. Inventory
+## 11. Inventory
 
 **Description:** A server-side entity that represents a container/inventory system for managing items — backpacks, chests, vehicle trunks, weapon slots, etc.
 
@@ -234,7 +213,7 @@ Proposals for new classes to expand the nanos world API. Each entry covers class
 
 ---
 
-## 13. Team
+## 12. Team
 
 **Description:** A server-side entity that represents a team in the game — managing members, scores, colors, and team-based gameplay logic.
 
@@ -254,7 +233,7 @@ Proposals for new classes to expand the nanos world API. Each entry covers class
 
 ---
 
-## 14. GameMode
+## 13. GameMode
 
 **Description:** A base entity class for defining game mode logic — round management, scoring rules, win conditions, player state management, and match lifecycle.
 
@@ -274,26 +253,7 @@ Proposals for new classes to expand the nanos world API. Each entry covers class
 
 ---
 
-## 15. Fog
-
-**Description:** A client-side entity that creates a localized fog volume in the world — for atmospheric effects, smoke screens, underwater haze, magical auras, etc.
-
-**Purpose:** Global fog is controlled through Sky settings, but localized fog volumes are needed for gameplay — smoke grenades, gas zones, magical effects, underwater areas, cave entrances, atmospheric storytelling.
-
-**Parent Classes:** Entity → Actor
-
-**Key Concepts:**
-- Box/Sphere/Capsule volume shape
-- Fog density, color, falloff
-- Priority for overlapping fog volumes
-- Fade in/out
-- Wind influence
-- Optional particle attachment
-- Events: FogEnter, FogExit (on overlapping actors)
-
----
-
-## 16. PhysicsField
+## 14. PhysicsField
 
 **Description:** A client-side entity that creates a localized physics force field — attracting, repelling, or applying custom forces to nearby physics objects within a radius.
 
@@ -325,9 +285,7 @@ Proposals for new classes to expand the nanos world API. Each entry covers class
 | 8 | `NavModifierVolume` | Runtime navmesh modification | Entity → Actor |
 | 9 | `Interactable` | Standardized interaction framework | Entity → Actor → Paintable |
 | 10 | `ProjectilePool` | Object pooling for projectiles | Entity |
-| 11 | `Radar` | Minimap/radar HUD rendering | Entity |
-| 12 | `Inventory` | Item container/slot management | Entity |
-| 13 | `Team` | Team management and scoring | Entity |
-| 14 | `GameMode` | Match lifecycle and rules | Entity |
-| 15 | `Fog` | Localized fog volume | Entity → Actor |
-| 16 | `PhysicsField` | Localized physics force field | Entity → Actor |
+| 11 | `Inventory` | Item container/slot management | Entity |
+| 12 | `Team` | Team management and scoring | Entity |
+| 13 | `GameMode` | Match lifecycle and rules | Entity |
+| 14 | `PhysicsField` | Localized physics force field | Entity → Actor |
